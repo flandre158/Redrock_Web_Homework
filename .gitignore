@@ -1,0 +1,15 @@
+#Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+#Jar:
+/web/WEB-INF/lib/*
+
+#idea:
+/.idea/*
+/out/*
+web.iml
+
+#undetermined:
+result.jsp
