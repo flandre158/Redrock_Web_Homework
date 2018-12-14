@@ -1,6 +1,7 @@
 package com.jdbc;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 
 //操作工具
 public class DBTool {
@@ -19,13 +20,21 @@ public class DBTool {
         }
     }
 
-    //插入数据
+    //注册账号
     public void insert(String username, String password) throws SQLException {
-        String sql = "INSERT INTO user(username,password) VALUES(?,?)";
+        String sql = "INSERT INTO user(username,password,RegistrationDate) VALUES(?,?,?)";
         pstmt = conn.prepareCall(sql);
         pstmt.setString(1, username);
         pstmt.setString(2, password);
+        pstmt.setDate(3, getDate());
         pstmt.executeUpdate();
+    }
+
+    //获取当前系统时间（辅助注册账号）
+    private java.sql.Date getDate() {
+        java.util.Date date = new java.util.Date();
+        java.sql.Date date1 = new java.sql.Date(date.getTime());
+        return date1;
     }
 
     //查询账号是否存在
